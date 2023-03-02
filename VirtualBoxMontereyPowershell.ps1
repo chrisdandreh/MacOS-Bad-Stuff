@@ -1,3 +1,5 @@
+read-host -prompt "Make sure you have ran powershell or terminal as a non-administrator and that you have at least 10gb of spare ram, 70gb of spare space on your C drive, and at least a 4 core 8 thread CPU from 2017 or later. Press anything to continue."
+
 $ProgressPreference = 'SilentlyContinue';
 #suppresses load bars, speeding up downloads. Thanks microsoft, remove this command and see that the download takes 4x longer;
 
@@ -45,6 +47,9 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 ./VBoxManage modifyvm "macOS Monterey" --nic1 nat;
 #for network connection;
 
+./modifyvm $vmName --chipset ich9;
+#changes chipset to ich9;
+
 ./VBoxManage createhd --filename "macOS Monterey.vdi" --size 50000 --format VDI;
 #creates VDI disk at size 50gb
 
@@ -54,10 +59,7 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 ./VBoxManage storageattach "macOS Monterey" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "./macOS Monterey.vdi";
 #Attaches storage;
 
-./VBoxManage storagectl "macOS Monterey" --name "IDE Controller" --add ide --controller ICH6;
-#adds IDE controller for CD drive;
-
-./VBoxManage storageattach "macOS Monterey" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium "c:/temp/macOS Monterey.iso"
+./VBoxManage storageattach "macOS Monterey" --storagectl "Sata Controller" --port 0 --device 1 --type dvddrive --medium "c:/temp/macOS Monterey.iso"
 #attaches installation ISO;
 
 ./VBoxManage modifyvm "macOS Monterey" --boot1 dvd --boot2 disk --boot3 none --boot4 none 
@@ -93,7 +95,7 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 ./VBoxManage modifyvm "macOS Monterey" --cpu-profile "Intel Core i7-6700K";
 #sets CPU to appear as a 6700k, 4 core and 8 thread Skylake CPU;
 
-./VBoxManage controlvm "macOS Monterey" -type gui;
+./VBoxManage startvm "macOS Monterey" --type gui;
 #starts the virtual machine and opens the gui;
 
 #Credits;
