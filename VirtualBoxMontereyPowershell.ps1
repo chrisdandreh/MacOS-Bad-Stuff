@@ -73,6 +73,9 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 ./VBoxManage modifyvm "macOS Monterey" --cpus 8;
 #sets number of CPU threads to 8;
 
+./VboxManage modifyvm "macOS Monterey" --mouse=usbtablet;
+#Sets the virtual machine to use a usb tablet as a mouse;
+
 ./VBoxManage.exe modifyvm "macOS Monterey" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff;
 #sets cpuid that macOS will recognize;
 
@@ -102,7 +105,7 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 
 #Credits;
 #Created by Christian Drehmann;
-#Revison 66 2023-03-01;
+#Revison 67 2023-03-01;
 #Source 1 https://i12bretro.github.io/tutorials/0629.html;
 #Source 2 https://www.makeuseof.com/tag/macos-windows-10-virtual-machine/;
 #Source 3 https://old.reddit.com/r/PowerShell/comments/phkr76/trying_to_download_google_drive_file_in/;
