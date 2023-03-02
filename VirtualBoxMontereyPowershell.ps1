@@ -16,7 +16,7 @@ start "https://drive.google.com/file/d/1wjRAyGnPmJDvH5QoCUtb8W2X_v_7PwKY/view?us
 #opens ISO download for user to interact with;
 
 
-read-host -prompt "A link will have opened in your browser, download the file. Once download is complete, copy the file to c:\temp\ and then press anything to proceed";
+read-host -prompt "A link will have opened in your browser, download the file. Once download is complete, cut and paste the file from your Downloads folder to c:\temp\ and then press anything to proceed";
 
 start-process c:\temp\7zip.exe /S;
 #silently installs 7zip;
@@ -49,6 +49,8 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 
 ./VBoxManage modifyvm "macOS Monterey" --chipset ich9;
 #changes chipset to ich9;
+
+./VBoxManage modifyvm "macOS Monterey" --firmware efi;
 
 ./VBoxManage storagectl "macOS Monterey" --name "Sata Controller" --add sata --controller IntelAhci;
 #Intel storage AHCI SATA controller;
@@ -100,7 +102,7 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 
 #Credits;
 #Created by Christian Drehmann;
-#Revison 64 2023-03-01;
+#Revison 66 2023-03-01;
 #Source 1 https://i12bretro.github.io/tutorials/0629.html;
 #Source 2 https://www.makeuseof.com/tag/macos-windows-10-virtual-machine/;
 #Source 3 https://old.reddit.com/r/PowerShell/comments/phkr76/trying_to_download_google_drive_file_in/;
