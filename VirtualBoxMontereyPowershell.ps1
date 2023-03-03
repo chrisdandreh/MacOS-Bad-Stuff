@@ -1,4 +1,4 @@
-read-host -prompt "Be prepared to type Y to message prompts or press Yes to message prompts that appear. Make sure you have ran powershell or terminal as a non-administrator and that you have at least 10gb of spare ram, 70gb of spare space on your C drive, and at least a 4 core 8 thread CPU from 2017 or later. Press anything to continue."
+read-host -prompt "Be prepared to type Y to message prompts or press Yes to message prompts that appear. Make sure you have ran powershell or terminal as a non-administrator and that you have at least 10gb of spare ram, 120gb of spare space on your C drive, and at least a 4 core 8 thread CPU from 2017 or later. Press anything to continue."
 
 $ProgressPreference = 'SilentlyContinue';
 #suppresses load bars, speeding up downloads. Thanks microsoft, remove this command and see that the download takes 4x longer;
@@ -55,8 +55,8 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 ./VBoxManage storagectl "macOS Monterey" --name "Sata Controller" --add sata --controller IntelAhci;
 #Intel storage AHCI SATA controller;
 
-./VBoxManage createhd --filename "c:\temp\macOS Monterey.vdi" --size 50000 --format VDI --variant Fixed;
-#creates VDI disk at size 50gb
+./VBoxManage createhd --filename "c:\temp\macOS Monterey.vdi" --size 90000 --format VDI --variant Fixed;
+#creates VDI disk at size 90gb
 
 ./VBoxManage storageattach "macOS Monterey" --storagectl "Sata Controller" --port 0 --device 0 --type hdd --medium "c:\temp\macOS Monterey.vdi";
 #Attaches storage;
@@ -111,7 +111,7 @@ cd "C:\Program Files\Oracle\VirtualBox\";
 
 #Credits;
 #Created by Christian Drehmann;
-#Revison 68 2023-03-01;
+#Revison 75 2023-03-01;
 #Source 1 https://i12bretro.github.io/tutorials/0629.html;
 #Source 2 https://www.makeuseof.com/tag/macos-windows-10-virtual-machine/;
 #Source 3 https://old.reddit.com/r/PowerShell/comments/phkr76/trying_to_download_google_drive_file_in/;
